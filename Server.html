@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Server</h2>
+
+<script>
+const express = require('express');
+const app = express();
+app.listen(3000, () => console.log*('listening at 3000'));
+app.use(express.static('public'));
+
+app.post('https://www.metaweather.com/api/location/search/?query=' + city, (request, response) => {
+  console.log(request);
+});
+
+/*
+// Setting up a route
+var searchCityResult = '';
+const Http = new XMLHttpRequest();
+Http.setRequestHeader('content-type','https://cors-anywhere.herokuapp.com/');
+const url='https://www.metaweather.com/api/location/search/?query=san';
+
+// POST request 
+Http.open("POST", url);
+Http.responseType = 'json';
+Http.send();
+
+Http.onreadystatechange=(e)=>{
+  console.log(Http.resonseText);
+}
+*/
+</script>
+</body>
+</html>
