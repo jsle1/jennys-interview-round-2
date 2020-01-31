@@ -3,16 +3,14 @@
 <body>
 
 <h2>HomePage</h2>
-<div container ="container">
 <div id="weatherMap"></div>
-</div>
 <head>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin=""/>   
 
     <style>
-    #weatherMap { height: 300px; }
+    #weatherMap { height: 400px; }
     </style>
 
 <!-- // create an input for the user to search a city
@@ -31,17 +29,20 @@ crossorigin=""></script>
 </head>
 
 
+<!-- Populating the Map! -->
     <script src="http://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <script src="./leaflet-providers.js"></script> 
-<script>
-    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-    var OpenStreetMap_BZH = L.tileLayer('https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png', {
-	maxZoom: 19,
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
-	bounds: [[46.2, -5.5], [50, 0.7]]
-});
-
-</script>
+        <script>
+            //L is the leaflet library
+        const mymap = L.map('weatherMap').setView([51.505, -0.09], 13);
+        const tilesUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        const tiles = L.tileLayer(tilesUrl,
+        {   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
+        });
+        tiles.addTo(mymap);
+        // May add the water color later because it's pretty. LOL
+        //L.tileLayer.provider('Stamen.Watercolor').addTo(mymap);
+        </script>
 
 </body>
 </html>
