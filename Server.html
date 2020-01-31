@@ -4,10 +4,14 @@
 
 <h2>Server</h2>
 
+<p>
+  latt and long: <span id="location"></span>
+</p>
+
 <script>
 
-const container = document.createElement('div')
-container.setAttribute('class', 'container')
+const container = document.createElement('div');
+container.setAttribute('class', 'container');
 
 var request = new XMLHttpRequest()
 request.open('GET', 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=san', true)
@@ -17,19 +21,13 @@ request.onload = function() {
 
   if (request.status >= 200 && request.status < 400) {
     data.forEach(city => {
-      const card = document.createElement('div');
-      card.setAttribute('class', 'card');
+      const city_name = city.title;
+      const woe_id = city.woeid;
+      const latt_long = city.latt_long;
 
-      const title = document.createElement('h1');
-      title.textContent = city.title;
-
-      const woe = document.createElement('h1');
-      woe.textContent = city.woeid;
-
-      const location = document.createElement('h1');
-      location.textContent = city.latt_long;
-
-      console.log(city.title, city.woeid, city.latt_long);
+      const cityName = document.getElementById('cityName').textContent = city_name;
+      const weatherId = document.getElementById('weatherId').textContent = woe_id;
+      const location = document.getElementById('location').textContent = latt_long;
     })
   } else {
     console.log('error');
