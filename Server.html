@@ -3,18 +3,39 @@
 <body>
 
 <h2>Server</h2>
-<p> city: <span id="city"></span></p>
 
 <script>
-      const api_url = 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=santiago’';
-      async function getWeather(){
-        const response = await fetch(api_url);
-        const data = await response.json();
-        const { title, woeid, latt_long } = data;
-        document.getElementById('city').textContent = title;
-        console.log(title);
-      }
-        getWeather(); 
-    </script>
-  </body>
+
+const container = document.createElement('div')
+container.setAttribute('class', 'container')
+
+var request = new XMLHttpRequest()
+request.open('GET', 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=san', true)
+request.onload = function() {
+  // Begin accessing JSON data here
+  var data = JSON.parse(this.response)
+
+  if (request.status >= 200 && request.status < 400) {
+    data.forEach(city => {
+      const card = document.createElement('div');
+      card.setAttribute('class', 'card');
+
+      const title = document.createElement('h1');
+      title.textContent = city.title;
+
+      const woe = document.createElement('h1');
+      woe.textContent = city.woeid;
+
+      const location = document.createElement('h1');
+      location.textContent = city.latt_long;
+
+      console.log(city.title, city.woeid, city.latt_long);
+    })
+  } else {
+    console.log('error');
+  }
+}
+request.send();
+</script>
+</body>
 </html>
