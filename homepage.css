@@ -1,0 +1,28 @@
+#weatherMap { height: 180px; }
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  color: #2c3e50;
+  background: #F7F7F7;
+  }
+  button {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    background-color: #93D682;
+    color: #F7F7F7;
+    border-radius: 5px;
+    outline:none;
+  }
+  button:hover {
+    background-color: #1f4316;
+  }
+  input {
+    outline:none;
+    height: 1rem;
+  }
+img {
+  height: 150px;
+}
+#heading {
+  text-align: center;
+  margin-block-start: 0;
+  margin-block-end: 0; 
+}
