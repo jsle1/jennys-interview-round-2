@@ -1,30 +1,42 @@
+// make the map
+const mymap = L.map('weatherMap').setView([50.5,30.5], 2);
+const tilesUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const tiles = L.tileLayer(tilesUrl,
+{   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
+});
+tiles.addTo(mymap);
+// Added watercolor filter bc it looks pretty
+L.tileLayer.provider('Stamen.Watercolor').addTo(mymap);
 
 // Getting the entered name of city
 function searchCity() {
-const enteredCity = document.getElementById("cName").value;
-console.log(enteredCity);
-}
+  const enteredCity = document.getElementById("cName").value;
 
-// GET Request of API
-var request = new XMLHttpRequest()
-const getRequest = request.open('GET', 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=santiago', true)
-request.onload = function() {
-  // Begin accessing JSON data here
-  const data = JSON.parse(this.response)
-  if (request.status >= 200 && request.status < 400) {
-    data.forEach(city => {
-      const city_name = city.title;
-      const woe_id = city.woeid;
-      const latt_long = city.latt_long;
-    })
- } else {
-    console.log('error');
+  var request = new XMLHttpRequest()
+  const getRequest = request.open('GET', 'https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=' + enteredCity, true);
+  request.send();
+  request.onload = function() {
+    // Begin accessing JSON data here
+    const data = JSON.parse(this.response)
+    if (request.status >= 200 && request.status < 400) {
+      data.forEach(city => {
+        const city_name = city.title;
+        const woe_id = city.woeid;
+        const latt_long = city.latt_long;
+
+        cityName = document.createElement('cityName').textContent = city.title;
+        weatherId = document.createElement('weatherId').textContent = city.woeid;
+        lattLong = document.createElement('lattLong').textContent = city.latt_long; 
+        splitLattLong = lattLong.split(",");
+        makeMarker(splitLattLong);
+      })
+   } else {
+      console.log('error');
+    }
   }
-const cityName = document.createElement('cityName').textContent = city_name;
-const weatherId = document.createElement('weatherId').textContent = woe_id;
-const location = document.getElementById('location').textContent = latt_long;
-
-  const lattLongArray = [latt_long]
-      marker.setLatLong(lattLongArray);
 }
-request.send();
+
+function makeMarker(lattLong){
+  const marker = L.marker(lattLong).addTo(mymap);
+}
+

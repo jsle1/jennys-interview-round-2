@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <link rel="stylesheet" href="homepage.css">
-    <script src="homepage.js"></script>
 <body>
 
   <div id="heading">
@@ -9,10 +8,11 @@
   <h1>Weather Bean</h1>
   </div>
 
-  <p>Input a city to find out the weather!
-  <input type="text" id="cName" placeholder="New Orleans" name="City required size=30">
-  <button type="submit" onclick="searchCity()">Search</button>
-  </p>
+  <p>Input a city to find out the weather!</p>
+  <form name= "enterCity">
+  <input type="text" id="cName" placeholder="Enter a City!" name="City required size=30">
+  <button type="button" onclick="searchCity()">Search</button>
+  </form>
 
   <!--Map appears here-->
   <div id="weatherMap"></div>
@@ -31,18 +31,6 @@ crossorigin=""></script>
 </body>
 
 <script>
-
-//L is the leaflet library
-const mymap = L.map('weatherMap').setView([50.5,30.5], 2);
-const marker = L.marker([0, 0]).addTo(mymap);
-const tilesUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-const tiles = L.tileLayer(tilesUrl,
-{   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
-});
-tiles.addTo(mymap);
-// Added watercolor filter bc it looks pretty
-L.tileLayer.provider('Stamen.Watercolor').addTo(mymap);
-
 </script>
-
+<script src="homepage.js"></script>
 </html>
