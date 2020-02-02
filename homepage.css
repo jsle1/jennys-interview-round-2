@@ -1,12 +1,9 @@
 #weatherMap { height: 300px; }
 html {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  text-align: center;
-}
-body {
   color: #2c3e50;
   background: #F7F7F7;
-  }
+}
   button {
     background-color: #93D682;
     color: #F7F7F7;
@@ -29,4 +26,5 @@ form {
 #heading {
   margin-block-start: 0;
   margin-block-end: 0; 
+  text-align: center;
 }

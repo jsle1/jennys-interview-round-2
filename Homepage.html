@@ -6,13 +6,24 @@
   <div id="heading">
   <img src="bean-sprout.png" alt="Cute Bean Sprout">
   <h1>Weather Bean</h1>
-  </div>
 
   <p>Input a city to find out the weather!</p>
   <form name= "enterCity">
   <input type="text" id="cName" placeholder="Enter a City!" name="City required size=30">
   <button type="button" onclick="searchCity()">Search</button>
   </form>
+</div>
+
+<div class="weatherCards">
+  <h3>City: <span id="city_name"></span></h3>
+  <h4>Weather: <span id="weather_state_name"></span></h4>
+  <p>Date: <span id="applicable_date"></span></p>
+    <div class="container">
+      <h4>Tempature: <span id="the_temp"></span></h4>
+      <p>High: <span id="max_temp"></span></p>
+      <p>Low: <span id="min_temp"></span></p>
+    </div>
+</div>
 
   <!--Map appears here-->
   <div id="weatherMap"></div>
