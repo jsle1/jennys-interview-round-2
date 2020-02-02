@@ -68,12 +68,6 @@ function getWeather() {
         document.getElementById('max_temp').innerHTML = Math.round(max_temp) + " &#8451";
         document.getElementById('the_temp').innerHTML = Math.round(the_temp) + " &#8451";
 
-        // not used yet
-        /*document.getElementById('wind_direction_compass').innerHTML = wind_direction_compass;
-        document.getElementById('wind_speed').innerHTML = wind_speed;
-        document.getElementById('humidity').innerHTML = humidity;
-        document.getElementById('visibility').innerHTML = visibility;*/
-
       })
    } else {
       console.log('Weather is not found!');
@@ -81,7 +75,7 @@ function getWeather() {
   }
 }
 
+// Makes marker
 function makeMarker(lattLong){
   const marker = L.marker(lattLong).addTo(mymap);
 }
-
