@@ -1,4 +1,4 @@
-// make the map
+// Populating the map
 const mymap = L.map('weatherMap').setView([50.5,30.5], 2);
 const tilesUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const tiles = L.tileLayer(tilesUrl,
@@ -20,18 +20,17 @@ function searchCity() {
     const data = JSON.parse(this.response)
     if (request.status >= 200 && request.status < 400) {
       data.forEach(city => {
-        const city_name = city.title;
-        const woe_id = city.woeid;
-        const latt_long = city.latt_long;
-
+        // making these global variables 
         cityName = document.createElement('cityName').textContent = city.title;
         weatherId = document.createElement('weatherId').textContent = city.woeid;
         lattLong = document.createElement('lattLong').textContent = city.latt_long; 
+
+        // splits the lattlong strong in order for the marker to take in the data
         splitLattLong = lattLong.split(",");
         makeMarker(splitLattLong);
       })
    } else {
-      console.log('error');
+      console.log('You did not enter a city!');
     }
   }
 }
