@@ -56,7 +56,7 @@ function getWeather() {
         max_temp = document.createElement('max_temp').textContent = city.max_temp,
         the_temp = document.createElement('the_temp').textContent = city.the_temp,
 
-        // allow city name to be called in HTML
+        // allow status & temps name to be called in HTML
         document.getElementById('weather_state_name').innerHTML = weather_state_name;
         document.getElementById('min_temp').innerHTML = Math.round(min_temp) + " &#8451";
         document.getElementById('max_temp').innerHTML = Math.round(max_temp) + " &#8451";
