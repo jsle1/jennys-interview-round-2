@@ -36,8 +36,8 @@ function searchCity() {
         getWeather();
       })
    } else {
-      console.log('You did not enter a city!');
-    }
+    alert("You did not enter a city. Try again. :)");
+  }
   }
 }
 
@@ -78,7 +78,7 @@ function changeWeatherImage(){
     document.getElementById("weatherPic").src = "./src/light cloud.png"
   } else if(weather_state_name == "Heavy Cloud"){
     document.getElementById("weatherPic").src = "./src/heavy cloud.png"
-  } else if(weather_state_name == "Light Rain"){
+  } else if(weather_state_name == "Light Rain" || "Showers"){
     document.getElementById("weatherPic").src = "./src/rain.png"
   } else if(weather_state_name == "Heavy Rain"){
     document.getElementById("weatherPic").src = "./src/heavy rain.png"
