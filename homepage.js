@@ -52,26 +52,38 @@ function getWeather() {
     if (request.status >= 200 && request.status < 400) {
       data.consolidated_weather.forEach(city => {
         weather_state_name = document.createElement('weather_state_name').textContent = city.weather_state_name,
-        applicable_date = document.createElement('applicable_date').textContent = city.applicable_date,
         min_temp = document.createElement('min_temp').textContent = city.min_temp,
         max_temp = document.createElement('max_temp').textContent = city.max_temp,
         the_temp = document.createElement('the_temp').textContent = city.the_temp,
-        wind_direction_compass = document.createElement('wind_direction_compass').textContent = city.wind_direction_compass,
-        wind_speed = document.createElement('wind_speed').textContent = city.wind_speed,
-        humidity = document.createElement('humidity').textContent = city.humidity,
-        visibility = document.createElement('visibility').textContent = city.visibility,
 
         // allow city name to be called in HTML
         document.getElementById('weather_state_name').innerHTML = weather_state_name;
-        document.getElementById('applicable_date').innerHTML = applicable_date;
         document.getElementById('min_temp').innerHTML = Math.round(min_temp) + " &#8451";
         document.getElementById('max_temp').innerHTML = Math.round(max_temp) + " &#8451";
         document.getElementById('the_temp').innerHTML = Math.round(the_temp) + " &#8451";
 
+        // updating weather status
+        changeWeatherImage();
       })
    } else {
       console.log('Weather is not found!');
     }
+  }
+}
+
+function changeWeatherImage(){
+  if(weather_state_name == "Clear"){
+    document.getElementById("weatherPic").src = "./src/clear.png"
+  } else if(weather_state_name == "Light Cloud"){
+    document.getElementById("weatherPic").src = "./src/light cloud.png"
+  } else if(weather_state_name == "Heavy Cloud"){
+    document.getElementById("weatherPic").src = "./src/heavy cloud.png"
+  } else if(weather_state_name == "Light Rain"){
+    document.getElementById("weatherPic").src = "./src/rain.png"
+  } else if(weather_state_name == "Heavy Rain"){
+    document.getElementById("weatherPic").src = "./src/heavy rain.png"
+  } else if(weather_state_name == "Snow"){
+    document.getElementById("weatherPic").src = "./src/snow.png"
   }
 }
 
